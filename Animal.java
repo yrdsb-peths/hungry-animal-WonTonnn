@@ -12,11 +12,7 @@ public class Animal extends Actor
     
     public void act()
     {
-        while(Greenfoot.isKeyDown("shift")){
-            sprint = true;
-        }
-        sprint = false;
-        
+                
         if(Greenfoot.isKeyDown("a")){
             setLocation(getX() - 2, getY());
         }
@@ -40,5 +36,6 @@ public class Animal extends Actor
         if(Greenfoot.isKeyDown("left")){
             turn(-2);
         }
+
     }
 }
