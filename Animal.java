@@ -8,18 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Animal extends Actor
 {
-    /**
-     * Act - do whatever the Animal wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private boolean sprint = false;
+    
     public void act()
     {
+        while(Greenfoot.isKeyDown("shift")){
+            sprint = true;
+        }
+        sprint = false;
+        
         if(Greenfoot.isKeyDown("a")){
-            move(-2);
+            setLocation(getX() - 2, getY());
         }
         
         if(Greenfoot.isKeyDown("d")){
-            move(2);
+            setLocation(getX() + 2, getY());
         }
         
         if(Greenfoot.isKeyDown("w")){
@@ -28,6 +31,14 @@ public class Animal extends Actor
         
         if(Greenfoot.isKeyDown("s")){
             setLocation(getX(), getY() + 2);
+        }
+        
+        if(Greenfoot.isKeyDown("right")){
+            turn(2);
+        }
+        
+        if(Greenfoot.isKeyDown("left")){
+            turn(-2);
         }
     }
 }
