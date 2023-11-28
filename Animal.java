@@ -14,27 +14,35 @@ public class Animal extends Actor
     {
                 
         if(Greenfoot.isKeyDown("a")){
-            setLocation(getX() - 2, getY());
+            setLocation(getX() - 5, getY());
         }
         
         if(Greenfoot.isKeyDown("d")){
-            setLocation(getX() + 2, getY());
+            setLocation(getX() + 5, getY());
         }
         
         if(Greenfoot.isKeyDown("w")){
-            setLocation(getX(), getY() - 2);
+            setLocation(getX(), getY() - 5);
         }
         
         if(Greenfoot.isKeyDown("s")){
-            setLocation(getX(), getY() + 2);
+            setLocation(getX(), getY() + 5);
         }
         
         if(Greenfoot.isKeyDown("right")){
-            turn(2);
+            turn(5);
         }
         
         if(Greenfoot.isKeyDown("left")){
-            turn(-2);
+            turn(-5);
+        }
+        
+        if(isTouching(Fries.class)){
+            removeTouching(Fries.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.createFries();
+            world.increaseScore();
+            
         }
 
     }

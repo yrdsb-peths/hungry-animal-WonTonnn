@@ -10,16 +10,39 @@ public class MyWorld extends World
 {
 
     Animal anim = new Animal();
-    Fries fries = new Fries();
-    private int random1 = Greenfoot.getRandomNumber(600);
-    private int random2 = Greenfoot.getRandomNumber(600);
+    public int score = 0;
+    Label scoreLab;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
+        super(600, 400, 1, false);
         addObject(anim, 200, 200);
-        addObject(fries, 0,0);
+        createFries();
         
+        //Create Label
+        scoreLab = new Label(0, 80);
+        addObject(scoreLab, 50, 50);
+        
+    }
+    
+    public void createFries()
+    {
+        Fries fries = new Fries();
+        int random1 = Greenfoot.getRandomNumber(600);
+        addObject(fries, random1, 0);
+    }
+    
+    public void increaseScore()
+    {
+        
+        score++;
+        scoreLab.setValue(score);
+    }
+    
+    public void gameOver()
+    {
+        Label gameOv = new Label ("Game Over", 100);
+        addObject(gameOv,super.getWidth()/2, super.getHeight()/2);
         
     }
 }

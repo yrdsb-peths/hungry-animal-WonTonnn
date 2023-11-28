@@ -12,10 +12,16 @@ public class Fries extends Actor
      * Act - do whatever the Fries wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int random1 = Greenfoot.getRandomNumber(600);
     public void act()
     {
-        setLocation(getX(), getY() + 5);
-        
+        setLocation(getX(), getY() + 4);
+        int yPos = getY();
+        MyWorld world = (MyWorld) getWorld();
+        if(yPos >= world.getHeight())
+        {
+            world.gameOver();
+        }
     }
+    
+
 }
