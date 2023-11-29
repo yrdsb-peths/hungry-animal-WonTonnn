@@ -10,39 +10,59 @@ public class MyWorld extends World
 {
 
     Animal anim = new Animal();
+    Fries fries = new Fries();
     public int score = 0;
     Label scoreLab;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false);
-        addObject(anim, 200, 200);
         createFries();
-        
+        createAnim();
         //Create Label
         scoreLab = new Label(0, 80);
         addObject(scoreLab, 50, 50);
-        
+
     }
-    
+
+    public void createAnim()
+    {
+        addObject(anim, 200, 200);
+    }
+
+    public void bigAnim()
+    {
+        GreenfootImage animalImg = anim.getImage();
+        animalImg.scale(animalImg.getWidth() + 15, animalImg.getHeight() + 15);   
+    }
+
     public void createFries()
     {
-        Fries fries = new Fries();
         int random1 = Greenfoot.getRandomNumber(600);
-        addObject(fries, random1, 0);
+        addObject(fries, random1, 0); 
     }
-    
+
     public void increaseScore()
     {
-        
         score++;
         scoreLab.setValue(score);
+        if(score < 50)
+        {
+
+            if(score % 5 == 0)
+            {
+                bigAnim();
+            }
+        }
     }
-    
+
     public void gameOver()
     {
         Label gameOv = new Label ("Game Over", 100);
         addObject(gameOv,super.getWidth()/2, super.getHeight()/2);
-        
+        removeObject(fries);
+        removeObject(anim);
+        Greenfoot.delay(10);
+
     }
 }

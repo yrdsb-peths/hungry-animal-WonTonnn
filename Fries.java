@@ -14,7 +14,7 @@ public class Fries extends Actor
      */
     public void act()
     {
-        setLocation(getX(), getY() + 4);
+        setLocation(getX(), getY() + 3);
         int yPos = getY();
         MyWorld world = (MyWorld) getWorld();
         if(yPos >= world.getHeight())
