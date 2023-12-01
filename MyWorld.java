@@ -13,6 +13,7 @@ public class MyWorld extends World
     Fries fries = new Fries();
     public int score = 0;
     Label scoreLab;
+    GreenfootImage animalImg = anim.getImage();
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -27,12 +28,12 @@ public class MyWorld extends World
 
     public void createAnim()
     {
+        animalImg.scale(100,100);
         addObject(anim, 200, 200);
     }
 
     public void bigAnim()
     {
-        GreenfootImage animalImg = anim.getImage();
         animalImg.scale(animalImg.getWidth() + 15, animalImg.getHeight() + 15);   
     }
 
