@@ -62,8 +62,9 @@ public class MyWorld extends World
         Label gameOv = new Label ("Game Over", 100);
         addObject(gameOv,super.getWidth()/2, super.getHeight()/2);
         removeObject(fries);
-        removeObject(anim);
-        Greenfoot.delay(10);
+        Greenfoot.delay(150);
+        Label resetRequest = new Label("Restart?", 50);
+        addObject(resetRequest, super.getWidth()/2, super.getHeight()/2 + 100);
 
     }
 }
