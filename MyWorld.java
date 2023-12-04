@@ -19,16 +19,9 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false);
         createFries();
-        createAnim();
         //Create Label
         scoreLab = new Label(0, 80);
         addObject(scoreLab, 50, 50);
-
-    }
-
-    public void createAnim()
-    {
-        animalImg.scale(100,100);
         addObject(anim, 200, 200);
     }
 
