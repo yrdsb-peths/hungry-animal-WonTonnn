@@ -8,10 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Animal extends Actor
 {
+    GreenfootImage[] idle = new GreenfootImage[1];
     private boolean sprint = false;
+    
+    public Animal()
+    {
+        for(int i = 0; i < idle.length; i++)
+        {
+            idle[i] = new GreenfootImage("images/char_idle/idle" + i + ".png");
+        
+        }
+        setImage(idle[0]);
+    }
+    
+    //Animate idle animation
+    int imageIndex = 0;
+    public void animateIdle()
+    {
+        setImage(idle[imageIndex]);
+        imageIndex = (imageIndex + 1) % idle.length;
+    }
 
     public void act()
     {
+        animateIdle();
 
         if(Greenfoot.isKeyDown("a")){
             setLocation(getX() - 5, getY());
