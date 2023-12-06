@@ -8,16 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Animal extends Actor
 {
-    GreenfootImage[] idle = new GreenfootImage[1];
+    GreenfootImage[] idle = new GreenfootImage[4];
     private boolean sprint = false;
+    SimpleTimer timer = new SimpleTimer();
     
     public Animal()
     {
         for(int i = 0; i < idle.length; i++)
         {
-            idle[i] = new GreenfootImage("images/char_idle/idle" + i + ".png");
-        
+            idle[i] = new GreenfootImage("char_idle/idle" + i + ".png");
+            idle[i].scale(100, 100);
+            Greenfoot.delay(50);
         }
+        timer.mark();
+        
+        //Initial Image
         setImage(idle[0]);
     }
     
@@ -25,9 +30,16 @@ public class Animal extends Actor
     int imageIndex = 0;
     public void animateIdle()
     {
+        if(timer.millisElapsed() < 500)
+        {
+            return;
+        }   
+        timer.mark();
         setImage(idle[imageIndex]);
         imageIndex = (imageIndex + 1) % idle.length;
     }
+    
+    
 
     public void act()
     {

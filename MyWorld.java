@@ -28,12 +28,14 @@ public class MyWorld extends World
 
     public void createAnim()
     {
-        animalImg.scale(100,100);
+        animalImg = anim.getImage();
         addObject(anim, 200, 200);
     }
+    
 
     public void bigAnim()
     {
+        animalImg = anim.getImage();
         animalImg.scale(animalImg.getWidth() + 15, animalImg.getHeight() + 15);   
     }
 
