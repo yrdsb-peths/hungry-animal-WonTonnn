@@ -14,6 +14,8 @@ public class MyWorld extends World
     public int score = 0;
     Label scoreLab;
     GreenfootImage animalImg = anim.getImage();
+    public static int animXSize = 100;
+    public static int animYSize = 100;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -35,8 +37,8 @@ public class MyWorld extends World
 
     public void bigAnim()
     {
-        animalImg = anim.getImage();
-        animalImg.scale(animalImg.getWidth() + 15, animalImg.getHeight() + 15);   
+        animXSize = animXSize + 15;
+        animYSize = animYSize + 15;
     }
 
     public void createFries()
