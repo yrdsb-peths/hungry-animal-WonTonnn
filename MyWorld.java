@@ -37,6 +37,7 @@ public class MyWorld extends World
 
     public void bigAnim()
     {
+        animalImg.scale(animalImg.getWidth() + 15, animalImg.getHeight() + 15); 
         animXSize = animXSize + 15;
         animYSize = animYSize + 15;
     }

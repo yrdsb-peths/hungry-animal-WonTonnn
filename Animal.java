@@ -75,10 +75,15 @@ public class Animal extends Actor
         setImage(leftWalk[imageIndex]);
         imageIndex = (imageIndex + 1) % leftWalk.length;
     }
+    
+    public void sizin()
+    {
+        getImage().scale(MyWorld.animXSize, MyWorld.animYSize);
+    }
 
     public void act()
     {
-        
+        sizin();
         if(!Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("d"))
         {
             animateIdle();
