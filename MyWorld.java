@@ -16,16 +16,34 @@ public class MyWorld extends World
     GreenfootImage animalImg = anim.getImage();
     public static int animXSize = 100;
     public static int animYSize = 100;
+    public boolean gameOver = false;
+    Label gameOv = new Label ("Game Over", 100);
+    Label resetRequest = new Label("Press space to restart!", 50);
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false);
         createFries();
         createAnim();
+        prepare();
         //Create Label
         scoreLab = new Label(0, 80);
         addObject(scoreLab, 50, 50);
 
+        prepare();
+    }
+    
+    public void act()
+    {
+        if(gameOver == true)
+        {
+            if(Greenfoot.isKeyDown("space"))
+            {
+                removeObject(gameOv);
+                removeObject(resetRequest);
+                reset();
+            }
+        }
     }
 
     public void createAnim()
@@ -33,7 +51,6 @@ public class MyWorld extends World
         animalImg = anim.getImage();
         addObject(anim, 200, 200);
     }
-    
 
     public void bigAnim()
     {
@@ -64,12 +81,30 @@ public class MyWorld extends World
 
     public void gameOver()
     {
-        Label gameOv = new Label ("Game Over", 100);
         addObject(gameOv,super.getWidth()/2, super.getHeight()/2);
         removeObject(fries);
         Greenfoot.delay(150);
-        Label resetRequest = new Label("Restart?", 50);
         addObject(resetRequest, super.getWidth()/2, super.getHeight()/2 + 100);
+        gameOver = true;
+        
+    }
 
+    public void reset()
+    {
+        TitleScreen title = new TitleScreen();
+        scoreLab.setValue(0);
+        prepare();
+        Greenfoot.setWorld(title);
+        gameOver = false;
+    }
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        animXSize = 100;
+        animYSize = 100; 
     }
 }
