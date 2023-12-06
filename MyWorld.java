@@ -19,6 +19,9 @@ public class MyWorld extends World
     public boolean gameOver = false;
     Label gameOv = new Label ("Game Over", 100);
     Label resetRequest = new Label("Press space to restart!", 50);
+    int imageIndex = 0;
+    SimpleTimer timer = new SimpleTimer();
+    public static boolean winOrNo = false;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -29,12 +32,17 @@ public class MyWorld extends World
         //Create Label
         scoreLab = new Label(0, 80);
         addObject(scoreLab, 50, 50);
+        
+        //Explosion Animation
 
         prepare();
     }
     
+    
     public void act()
     {
+        
+        //Checks if game is over; gives ability to reset 
         if(gameOver == true)
         {
             if(Greenfoot.isKeyDown("space"))
@@ -46,25 +54,29 @@ public class MyWorld extends World
         }
     }
 
+    //Spawns in character
     public void createAnim()
     {
         animalImg = anim.getImage();
         addObject(anim, 200, 200);
     }
 
+    //Makes character bigger in increments 
     public void bigAnim()
     {
         animalImg.scale(animalImg.getWidth() + 15, animalImg.getHeight() + 15); 
         animXSize = animXSize + 15;
         animYSize = animYSize + 15;
     }
-
+    
+    //Spawns in fries 
     public void createFries()
     {
         int random1 = Greenfoot.getRandomNumber(600);
         addObject(fries, random1, 0); 
     }
 
+    //Increases label for score every time a fry is eaten
     public void increaseScore()
     {
         score++;
@@ -77,8 +89,15 @@ public class MyWorld extends World
                 bigAnim();
             }
         }
+        
+        if(score == 2)
+        {
+            winOrNo = true;
+            removeObject(fries);
+        }
     }
 
+    //Game over function
     public void gameOver()
     {
         addObject(gameOv,super.getWidth()/2, super.getHeight()/2);
@@ -88,7 +107,9 @@ public class MyWorld extends World
         gameOver = true;
         
     }
-
+    
+    
+    //Reset to titlescreen function
     public void reset()
     {
         TitleScreen title = new TitleScreen();
@@ -102,6 +123,8 @@ public class MyWorld extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
+    
+    //Sets character's size to regular between biggering 
     private void prepare()
     {
         animXSize = 100;
