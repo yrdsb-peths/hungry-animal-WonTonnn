@@ -12,9 +12,9 @@ public class Animal extends Actor
     GreenfootImage[] rightWalk = new GreenfootImage[6];
     GreenfootImage[] leftWalk = new GreenfootImage[6];
     GreenfootImage[] explosion = new GreenfootImage[9];
-    private boolean sprint = false;
+    GreenfootSound eat = new GreenfootSound("zombies_eating.mp3");
     SimpleTimer timer = new SimpleTimer();
-    
+
     public Animal()
     {
         for(int i = 0; i < idle.length; i++)
@@ -22,30 +22,25 @@ public class Animal extends Actor
             idle[i] = new GreenfootImage("char_idle/idle" + i + ".png");
             idle[i].scale(MyWorld.animXSize, MyWorld.animYSize);
         }
-        
+
         for(int r = 0; r < rightWalk.length; r++)
         {
             rightWalk[r] = new GreenfootImage("char_right/" + r + ".png");
             rightWalk[r].scale(MyWorld.animXSize,MyWorld.animYSize);
         }
-        
+
         for(int l = 0; l < leftWalk.length; l++)
         {
             leftWalk[l] = new GreenfootImage("char_left/" + l + ".png");
             leftWalk[l].scale(MyWorld.animXSize,MyWorld.animYSize);
         }
-        
-        for(int i = 0; i < explosion.length; i++)
-        {
-            explosion[i] = new GreenfootImage("explosion/" + i + ".png");
-            explosion[i].scale(MyWorld.animXSize, MyWorld.animYSize);
-        }
+
         timer.mark();
-        
+
         //Initial Image
         setImage(idle[0]);
     }
-    
+
     //Animate idle animation
     int imageIndex = 0;
     int idleIndex = 0;
@@ -58,9 +53,9 @@ public class Animal extends Actor
         timer.mark();
         imageIndex = (imageIndex + 1) % idle.length;
         setImage(idle[imageIndex]);
-        
+
     }
-    
+
     public void animateRightWalk()
     {
         if(timer.millisElapsed() < 50)
@@ -71,7 +66,7 @@ public class Animal extends Actor
         setImage(rightWalk[imageIndex]);
         imageIndex = (imageIndex + 1) % rightWalk.length;
     }
-    
+
     public void animateLeftWalk()
     {
         if(timer.millisElapsed() < 50)
@@ -82,18 +77,20 @@ public class Animal extends Actor
         setImage(leftWalk[imageIndex]);
         imageIndex = (imageIndex + 1) % leftWalk.length;
     }
-    
+
     public void animateExplosion()
     {
-        if(timer.millisElapsed() < 20)
+        for(int i = 0; i < explosion.length; i++)
         {
-            return;
+            explosion[i] = new GreenfootImage("explosion/" + i + ".png");
+            explosion[i].scale(MyWorld.animXSize, MyWorld.animYSize);
+            setImage(explosion[i]);
+            Greenfoot.delay(10);
         }
-        timer.mark();
-        setImage(explosion[imageIndex]);
-        imageIndex = (imageIndex + 1) % explosion.length;
+        MyWorld.winOrNo = false;
+
     }
-    
+
     public void sizin()
     {
         getImage().scale(MyWorld.animXSize, MyWorld.animYSize);
@@ -141,13 +138,19 @@ public class Animal extends Actor
             removeTouching(Fries.class);
             MyWorld world = (MyWorld) getWorld();
             world.createFries();
+            if(MyWorld.score % 10 == 0)
+            {
+                eat.play();
+            }
             world.increaseScore();
 
         }
-        
+
         if(MyWorld.winOrNo == true)
         {
+            MyWorld world = (MyWorld) getWorld();
             animateExplosion();
+            world.gameOver();
         }
 
     }

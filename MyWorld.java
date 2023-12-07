@@ -11,12 +11,12 @@ public class MyWorld extends World
 
     Animal anim = new Animal();
     Fries fries = new Fries();
-    public int score = 0;
+    public static int score = 0;
     Label scoreLab;
     GreenfootImage animalImg = anim.getImage();
     public static int animXSize = 100;
     public static int animYSize = 100;
-    public boolean gameOver = false;
+    public static boolean gameOver = false;
     Label gameOv = new Label ("Game Over", 100);
     Label resetRequest = new Label("Press space to restart!", 50);
     int imageIndex = 0;
@@ -52,6 +52,7 @@ public class MyWorld extends World
                 reset();
             }
         }
+    
     }
 
     //Spawns in character
@@ -90,7 +91,7 @@ public class MyWorld extends World
             }
         }
         
-        if(score == 2)
+        if(score == 50)
         {
             winOrNo = true;
             removeObject(fries);
@@ -105,6 +106,7 @@ public class MyWorld extends World
         Greenfoot.delay(150);
         addObject(resetRequest, super.getWidth()/2, super.getHeight()/2 + 100);
         gameOver = true;
+        anim.setLocation(-100, -100);
         
     }
     
