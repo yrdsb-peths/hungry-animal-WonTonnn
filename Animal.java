@@ -145,7 +145,7 @@ public class Animal extends Actor
             removeTouching(Fries.class);
             MyWorld world = (MyWorld) getWorld();
             world.createFries();
-            if(MyWorld.score % 10 == 0)
+            if(world.score % 10 == 0)
             {
                 eat.play();
             }
