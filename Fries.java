@@ -17,11 +17,12 @@ public class Fries extends Actor
         setLocation(getX(), getY() + 3);
         int yPos = getY();
         MyWorld world = (MyWorld) getWorld();
+
+        //if fries are below the ground, will game over
         if(yPos >= world.getHeight())
         {
             world.gameOver();
         }
     }
-    
 
 }
