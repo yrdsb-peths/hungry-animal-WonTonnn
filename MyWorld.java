@@ -11,7 +11,7 @@ public class MyWorld extends World
 
     Animal anim = new Animal();
     Fries fries = new Fries();
-    public static int score = 0;
+    public int score = 0;
     Label scoreLab;
     GreenfootImage animalImg = anim.getImage();
     public static int animXSize = 100;
