@@ -32,16 +32,15 @@ public class MyWorld extends World
         //Create Label
         scoreLab = new Label(0, 80);
         addObject(scoreLab, 50, 50);
-        
+
         //Explosion Animation
 
         prepare();
     }
-    
-    
+
     public void act()
     {
-        
+
         //Checks if game is over; gives ability to reset 
         if(gameOver == true)
         {
@@ -52,7 +51,7 @@ public class MyWorld extends World
                 reset();
             }
         }
-    
+
     }
 
     //Spawns in character
@@ -69,7 +68,7 @@ public class MyWorld extends World
         animXSize = animXSize + 15;
         animYSize = animYSize + 15;
     }
-    
+
     //Spawns in fries 
     public void createFries()
     {
@@ -90,7 +89,7 @@ public class MyWorld extends World
                 bigAnim();
             }
         }
-        
+
         if(score == 50)
         {
             winOrNo = true;
@@ -107,10 +106,9 @@ public class MyWorld extends World
         addObject(resetRequest, super.getWidth()/2, super.getHeight()/2 + 100);
         gameOver = true;
         anim.setLocation(-100, -100);
-        
+
     }
-    
-    
+
     //Reset to titlescreen function
     public void reset()
     {
@@ -125,7 +123,7 @@ public class MyWorld extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    
+
     //Sets character's size to regular between biggering 
     private void prepare()
     {

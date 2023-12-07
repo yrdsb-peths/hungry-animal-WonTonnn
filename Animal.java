@@ -23,7 +23,7 @@ public class Animal extends Actor
             idle[i] = new GreenfootImage("char_idle/idle" + i + ".png");
             idle[i].scale(MyWorld.animXSize, MyWorld.animYSize);
         }
-        
+
         //animation loop for right walk + left walk
         for(int r = 0; r < rightWalk.length; r++)
         {
@@ -58,7 +58,6 @@ public class Animal extends Actor
 
     }
 
-    
     //Animate right walk animation
     public void animateRightWalk()
     {
@@ -94,7 +93,7 @@ public class Animal extends Actor
         MyWorld.winOrNo = false;
 
     }
-    
+
     //checks and updates size as the character is animated
     public void sizin()
     {
@@ -104,7 +103,7 @@ public class Animal extends Actor
     public void act()
     {
         sizin();
-        
+
         //If not moving, idle animation
         if(!Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("d"))
         {
@@ -153,7 +152,7 @@ public class Animal extends Actor
             world.increaseScore();
 
         }
-        
+
         //checks if the user has won; and performed explosion and game over screen when finished
 
         if(MyWorld.winOrNo == true)
