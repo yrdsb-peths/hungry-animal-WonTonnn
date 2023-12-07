@@ -17,12 +17,14 @@ public class Animal extends Actor
 
     public Animal()
     {
+        //Animation loop for Idle
         for(int i = 0; i < idle.length; i++)
         {
             idle[i] = new GreenfootImage("char_idle/idle" + i + ".png");
             idle[i].scale(MyWorld.animXSize, MyWorld.animYSize);
         }
-
+        
+        //animation loop for right walk + left walk
         for(int r = 0; r < rightWalk.length; r++)
         {
             rightWalk[r] = new GreenfootImage("char_right/" + r + ".png");
@@ -56,6 +58,8 @@ public class Animal extends Actor
 
     }
 
+    
+    //Animate right walk animation
     public void animateRightWalk()
     {
         if(timer.millisElapsed() < 50)
@@ -90,7 +94,8 @@ public class Animal extends Actor
         MyWorld.winOrNo = false;
 
     }
-
+    
+    //checks and updates size as the character is animated
     public void sizin()
     {
         getImage().scale(MyWorld.animXSize, MyWorld.animYSize);
@@ -99,6 +104,8 @@ public class Animal extends Actor
     public void act()
     {
         sizin();
+        
+        //If not moving, idle animation
         if(!Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("d"))
         {
             animateIdle();
@@ -134,6 +141,7 @@ public class Animal extends Actor
             turn(-5);
         }
 
+        //Removies fries if eaten
         if(isTouching(Fries.class)){
             removeTouching(Fries.class);
             MyWorld world = (MyWorld) getWorld();
@@ -145,6 +153,8 @@ public class Animal extends Actor
             world.increaseScore();
 
         }
+        
+        //checks if the user has won; and performed explosion and game over screen when finished
 
         if(MyWorld.winOrNo == true)
         {
