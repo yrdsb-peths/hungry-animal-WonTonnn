@@ -36,11 +36,19 @@ dependency8.type=UsesDependency
 dependency9.from=Animal
 dependency9.to=SimpleTimer
 dependency9.type=UsesDependency
+<<<<<<< Updated upstream
 editor.fx.0.height=1056
 editor.fx.0.width=1936
 editor.fx.0.x=-8
 editor.fx.0.y=-8
 height=584
+=======
+editor.fx.0.height=836
+editor.fx.0.width=763
+editor.fx.0.x=475
+editor.fx.0.y=88
+height=838
+>>>>>>> Stashed changes
 package.numDependencies=11
 package.numTargets=6
 project.charset=windows-1252
@@ -99,8 +107,13 @@ target6.type=ClassTarget
 target6.width=120
 target6.x=0
 target6.y=0
+<<<<<<< Updated upstream
 version=3.0.0
 width=854
+=======
+version=3.1.0
+width=1550
+>>>>>>> Stashed changes
 world.lastInstantiated=TitleScreen
-xPosition=532
-yPosition=131
+xPosition=0
+yPosition=0
